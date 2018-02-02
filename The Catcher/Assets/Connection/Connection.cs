@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Threading;
@@ -7,6 +6,13 @@ using UnityEngine;
 
 public class Connection : MonoBehaviour
 {
+    #region [ Events ]
+    public delegate void ConnectionStatusAction();
+    public static event ConnectionStatusAction OnDisconnected;
+    public static event ConnectionStatusAction OnConnected;
+    public static event ConnectionStatusAction OnZeroed;
+    #endregion
+
     #region [ Singleton ]
     private static Connection m_Instance = null;    
     
@@ -26,59 +32,144 @@ public class Connection : MonoBehaviour
     }
     #endregion
 
-    private const int k_BufferSize = 32;
-
     public string m_ServerHostName = "192.168.1.2";
 
     public int m_ServerPort = 3333;
 
-    private byte[] m_BufferRead = new byte[k_BufferSize];
+    private byte[] m_BufferRead = new byte[32];
 
     private Socket m_ClientSocket = null;
 
-    private volatile bool m_IsConnected;
+    private volatile bool m_IsConnected = false;
 
     private volatile ConnectionGamePackage m_SendPackage = new ConnectionGamePackage();
 
     private volatile ConnectionRobotPackage m_ReceivePackage = new ConnectionRobotPackage();
 
-    private volatile ConnectionState m_ConnectionState = ConnectionState.None;
+    private volatile ConnectionState m_ConnectionState = ConnectionState.Connecting;
 
-    private volatile ConnectionRobotStatus m_LastConnectionRoboStatus;
+    private volatile ConnectionRobotStatus m_LastConnectionRoboStatus = ConnectionRobotStatus.Disconnected;
 
-    private Thread m_Thread;
+    private object m_Lock = new object();
+
+    public int m_Sleep = 0;
+
+    private Thread m_Thread = null;
 
     private void Start ()
     {
-		
+        Connect();
 	}
 	
-	void Update () {
-		
-	}
-
-    public static void Receive()
+    public void Connect()
     {
+        if (m_IsConnected)
+            return;
 
+        try
+        {
+            m_ClientSocket = new Socket(AddressFamily.InterNetwork,
+                SocketType.Stream,
+                ProtocolType.Tcp);
+
+            m_Thread = new Thread(Run);
+            m_Thread.Start();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+            Disconnect();
+        }
     }
 
-    public static void Send()
+    public void Run()
     {
+        m_ConnectionState = ConnectionState.Connecting;
 
+        try
+        {
+            m_ClientSocket.Connect(m_ServerHostName, m_ServerPort);
+            m_IsConnected = m_ClientSocket.Connected;
+
+            if (m_IsConnected && OnConnected != null)
+                OnConnected();
+
+            while (IsConnected)
+            {
+                Send();
+
+                Receive();
+
+                Thread.Sleep(m_Sleep);
+            }
+
+            Disconnect();
+        }
+        catch (Exception e)
+        {
+            Debug.LogError(e.Message);
+            Disconnect();
+        }
+    }
+
+    private void Receive()
+    {
+        lock (m_Lock)
+        {
+            m_ClientSocket.Receive(m_BufferRead, 0, 12, SocketFlags.None);
+            if (m_BufferRead.Length > 0)
+                m_ReceivePackage.Decode(m_BufferRead);
+
+            if (m_LastConnectionRoboStatus == ConnectionRobotStatus.Homing && (ConnectionRobotStatus)m_ReceivePackage.Status == ConnectionRobotStatus.Running)
+            {
+                m_SendPackage.Control = (int)ConnectionGameControl.Running;
+                if (OnZeroed != null)
+                    OnZeroed();
+            }
+
+            if (m_SendPackage.Control == (int)ConnectionGameControl.Disconnect)
+                m_IsConnected = false;
+
+            m_LastConnectionRoboStatus = (ConnectionRobotStatus)ReceivePackage.Status;
+        }
+    }
+
+    private void Send()
+    {
+        lock (m_Lock)
+        { 
+            byte[] buffer = m_SendPackage.Encode();
+            m_ClientSocket.Send(buffer, 0, buffer.Length, SocketFlags.None);
+        }
+    }
+
+    public void Home()
+    {
+        lock (m_Lock)
+        {
+            m_ConnectionState = ConnectionState.Homing;
+            m_SendPackage.Control = (int)ConnectionGameControl.Home;
+        }
     }
 
     private void Disconnect()
     {
+        if (OnDisconnected != null)
+            OnDisconnected();
+
+        m_IsConnected = false;
         m_ConnectionState = ConnectionState.Disconnecting;
         m_SendPackage.Control = (int)ConnectionGameControl.Disconnect;
+
+        if (OnDisconnected != null)
+            OnDisconnected();
 
         if (m_Thread != null)
             m_Thread.Abort();
 
-        m_IsConnected = false;
-
         if (m_ClientSocket != null && m_ClientSocket.Connected)
         {
+
             m_ClientSocket.Close();
             m_ClientSocket = null;
         }
@@ -92,6 +183,23 @@ public class Connection : MonoBehaviour
     private void OnApplicationQuit()
     {
         Disconnect();   
+    }
+
+    public bool IsConnected
+    {
+        get { return m_IsConnected; }
+    }
+
+    public ConnectionGamePackage SendPackage
+    {
+        get { return m_SendPackage; }
+        set { lock (m_Lock) { m_SendPackage = value; }  }
+    }
+
+    public ConnectionRobotPackage ReceivePackage
+    {
+        get { return m_ReceivePackage; }
+        set { lock (m_Lock) { m_ReceivePackage = value; } }
     }
 }
 

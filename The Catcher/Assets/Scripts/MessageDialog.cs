@@ -18,7 +18,7 @@ public class MessageDialog : MonoBehaviour
     private CanvasGroup m_CanvasGroup;
     private bool m_IsShow;
 
-    private float m_FadeTime = 0.25f;
+    private float m_FadeTime = 0.1f;
     private bool m_IsFading = false;
 
     public bool IsShow
@@ -57,22 +57,30 @@ public class MessageDialog : MonoBehaviour
         m_Title.text = title;
         m_Message.text = message;
 
-        m_Butons[0].gameObject.SetActive(true);
-        m_Butons[0].onClick.RemoveAllListeners();
-        m_Butons[0].onClick.AddListener(delegate { Hide(); });
-        if (actionEvents[0] != null)
-            m_Butons[0].onClick.AddListener(actionEvents[0]);
-        m_TextButtons[0].text = textButtons[0].ToUpper();
-
-        m_Butons[1].gameObject.SetActive(false);
-        if (textButtons.Length == 2 && actionEvents.Length == 2)
+        if (textButtons.Length == 0)
         {
-            m_Butons[1].gameObject.SetActive(true);
-            m_Butons[1].onClick.RemoveAllListeners();
-            m_Butons[1].onClick.AddListener(delegate { Hide(); });
-            if (actionEvents[1] != null)
-                m_Butons[1].onClick.AddListener(actionEvents[1]);
-            m_TextButtons[1].text = textButtons[1].ToUpper();
+            m_Butons[0].gameObject.SetActive(false);
+            m_Butons[1].gameObject.SetActive(false);
+        }
+        else
+        {
+            m_Butons[0].gameObject.SetActive(true);
+            m_Butons[0].onClick.RemoveAllListeners();
+            m_Butons[0].onClick.AddListener(delegate { Hide(); });
+            if (actionEvents[0] != null)
+                m_Butons[0].onClick.AddListener(actionEvents[0]);
+            m_TextButtons[0].text = textButtons[0].ToUpper();
+
+            m_Butons[1].gameObject.SetActive(false);
+            if (textButtons.Length == 2 && actionEvents.Length == 2)
+            {
+                m_Butons[1].gameObject.SetActive(true);
+                m_Butons[1].onClick.RemoveAllListeners();
+                m_Butons[1].onClick.AddListener(delegate { Hide(); });
+                if (actionEvents[1] != null)
+                    m_Butons[1].onClick.AddListener(actionEvents[1]);
+                m_TextButtons[1].text = textButtons[1].ToUpper();
+            }
         }
 
         m_FaderPanel.gameObject.SetActive(true);

@@ -27,6 +27,17 @@ public class HubManager : MonoBehaviour
     public int m_TaskValueDefault = 20;
     public string m_TaskKey;
 
+    [Header("Connection")]
+    public Image m_ConnectionImage;
+    public Color m_ConnectedColor;
+    public Color m_DisconnectedColor;
+    public Text m_ConnectionStatus;
+
+    [Header("Home Connection")]
+    public Button m_HomeButton;
+    public string m_HomeTitle = "Zerando robô";
+    public string m_HomeText = "Mantenha o punho parado no centro";
+
     [Header("Other Properties")]
     public InputField m_UserInputField;
     public string m_PlaySceneName = "Gameplay";
@@ -34,9 +45,10 @@ public class HubManager : MonoBehaviour
     [Header("Keyboard")]
     public bool m_UseKeyboard = false;
 
+    private bool m_Zeroing = false;
     private bool m_RobotZeroed = false;
+    private bool m_ShowZeroDialog = false;
     private AudioSource m_AudioSource;
-
     private UnityAction m_YesAction;
     private UnityAction m_NoAction;
     private UnityAction m_ConfirmAction;
@@ -46,18 +58,58 @@ public class HubManager : MonoBehaviour
         m_AudioSource = GetComponent<AudioSource>();
     }
 
+    private void OnEnable()
+    {
+        Connection.OnZeroed += OnZeroed;
+    }
+
+    private void OnDisable()
+    {
+        Connection.OnZeroed -= OnZeroed;
+    }
+
     private void Start()
     {
-        m_CloseButton.onClick.RemoveAllListeners();
-        m_CloseButton.onClick.AddListener(delegate { Close(); });
+        if (m_CloseButton)
+        {
+            m_CloseButton.onClick.RemoveAllListeners();
+            m_CloseButton.onClick.AddListener(delegate { Close(); });
+        }
 
-        m_UserPlayButton.onClick.RemoveAllListeners();
-        m_UserPlayButton.onClick.AddListener(delegate { PlayGameCheck(); });
+        if (m_UserPlayButton)
+        {
+            m_UserPlayButton.onClick.RemoveAllListeners();
+            m_UserPlayButton.onClick.AddListener(delegate { PlayGameCheck(); });
+        }
+
+        if (m_HomeButton)
+        {
+            m_HomeButton.onClick.RemoveAllListeners();
+            m_HomeButton.onClick.AddListener(delegate { Zerar(); });
+        }
 
         if (PlayerPrefs.HasKey(m_TaskKey))
             m_TaskInputField.text = PlayerPrefs.GetInt(m_TaskKey).ToString();
         else 
             m_TaskInputField.text = m_TaskValueDefault.ToString();
+    }
+
+    private void Update()
+    {
+        if (Connection.Instance.IsConnected)
+        {
+            m_ConnectionImage.color = m_ConnectedColor;
+            m_ConnectionStatus.text = string.Format("{0:0.000}", Connection.Instance.ReceivePackage.Position);
+            if (m_ShowZeroDialog && !m_Zeroing)
+            {
+                m_ShowZeroDialog = false;
+                MessageDialog.Instance.Hide();
+            }
+        }
+        else
+        {
+            m_ConnectionImage.color = m_DisconnectedColor;
+        }
     }
 
     public void Close()
@@ -92,7 +144,29 @@ public class HubManager : MonoBehaviour
 
     public void Zerar()
     {
+        if (m_Zeroing)
+            return;
+
         m_AudioSource.Play();
+        ShowDialog(m_HomeTitle, m_HomeText);
+
+        m_Zeroing = true;
+        m_RobotZeroed = false;
+
+        m_ShowZeroDialog = true;
+
+        Connection.Instance.Home();
+    }
+
+    private void OnZeroed()
+    {
+        m_RobotZeroed = true;
+        m_Zeroing = false;
+    }
+
+    private void ShowDialog(string title, string text)
+    {
+         MessageDialog.Instance.Show(title, text, new string[] { }, new UnityAction[] { });
     }
 
     private void ShowDialog(string title, string text, string leftButton, string rightButton = null)
