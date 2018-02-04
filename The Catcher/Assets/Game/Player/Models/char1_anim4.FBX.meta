@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: 215cfa5d512919942848cf173a965501
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Alien
+    100002: AlienHead
+    100004: AlienHeadBone001
+    100006: AlienHeadBone002
+    100008: AlienHeadGizmo
+    100010: AlienLArm1
+    100012: AlienLArm2
+    100014: AlienLArmCollarbone
+    100016: AlienLArmDigit01
+    100018: AlienLArmDigit02
+    100020: AlienLArmDigit03
+    100022: AlienLArmDigit11
+    100024: AlienLArmDigit12
+    100026: AlienLArmDigit13
+    100028: AlienLArmDigit21
+    100030: AlienLArmDigit22
+    100032: AlienLArmDigit23
+    100034: AlienLArmDigit31
+    100036: AlienLArmDigit32
+    100038: AlienLArmDigit33
+    100040: AlienLArmPalm
+    100042: AlienLArmPalmGizmo
+    100044: AlienLLeg1
+    100046: AlienLLeg2
+    100048: AlienLLegPalm
+    100050: AlienLLegPlatform
+    100052: AlienLLegPlatformGizmo
+    100054: AlienPelvis
+    100056: AlienPelvisGizmo
+    100058: AlienRArm1
+    100060: AlienRArm2
+    100062: AlienRArmCollarbone
+    100064: AlienRArmDigit01
+    100066: AlienRArmDigit02
+    100068: AlienRArmDigit03
+    100070: AlienRArmDigit11
+    100072: AlienRArmDigit12
+    100074: AlienRArmDigit13
+    100076: AlienRArmDigit21
+    100078: AlienRArmDigit22
+    100080: AlienRArmDigit23
+    100082: AlienRArmDigit31
+    100084: AlienRArmDigit32
+    100086: AlienRArmDigit33
+    100088: AlienRArmPalm
+    100090: AlienRArmPalmGizmo
+    100092: AlienRibcage
+    100094: AlienRLeg1
+    100096: AlienRLeg2
+    100098: AlienRLegPalm
+    100100: AlienRLegPlatform
+    100102: AlienRLegPlatformGizmo
+    100104: AlienSpine
+    100106: AlienSpine1
+    100108: AlienSpine2
+    100110: AlienTail1
+    100112: AlienTail2
+    100114: AlienTail3
+    100116: AlienTail3Gizmo
+    100118: AlienTail4
+    100120: AlienTail4Gizmo
+    100122: AlienTail5
+    100124: AlienTail5Gizmo
+    100126: Bone001
+    100128: cesta001
+    100130: char1
+    100132: //RootNode
+    400000: Alien
+    400002: AlienHead
+    400004: AlienHeadBone001
+    400006: AlienHeadBone002
+    400008: AlienHeadGizmo
+    400010: AlienLArm1
+    400012: AlienLArm2
+    400014: AlienLArmCollarbone
+    400016: AlienLArmDigit01
+    400018: AlienLArmDigit02
+    400020: AlienLArmDigit03
+    400022: AlienLArmDigit11
+    400024: AlienLArmDigit12
+    400026: AlienLArmDigit13
+    400028: AlienLArmDigit21
+    400030: AlienLArmDigit22
+    400032: AlienLArmDigit23
+    400034: AlienLArmDigit31
+    400036: AlienLArmDigit32
+    400038: AlienLArmDigit33
+    400040: AlienLArmPalm
+    400042: AlienLArmPalmGizmo
+    400044: AlienLLeg1
+    400046: AlienLLeg2
+    400048: AlienLLegPalm
+    400050: AlienLLegPlatform
+    400052: AlienLLegPlatformGizmo
+    400054: AlienPelvis
+    400056: AlienPelvisGizmo
+    400058: AlienRArm1
+    400060: AlienRArm2
+    400062: AlienRArmCollarbone
+    400064: AlienRArmDigit01
+    400066: AlienRArmDigit02
+    400068: AlienRArmDigit03
+    400070: AlienRArmDigit11
+    400072: AlienRArmDigit12
+    400074: AlienRArmDigit13
+    400076: AlienRArmDigit21
+    400078: AlienRArmDigit22
+    400080: AlienRArmDigit23
+    400082: AlienRArmDigit31
+    400084: AlienRArmDigit32
+    400086: AlienRArmDigit33
+    400088: AlienRArmPalm
+    400090: AlienRArmPalmGizmo
+    400092: AlienRibcage
+    400094: AlienRLeg1
+    400096: AlienRLeg2
+    400098: AlienRLegPalm
+    400100: AlienRLegPlatform
+    400102: AlienRLegPlatformGizmo
+    400104: AlienSpine
+    400106: AlienSpine1
+    400108: AlienSpine2
+    400110: AlienTail1
+    400112: AlienTail2
+    400114: AlienTail3
+    400116: AlienTail3Gizmo
+    400118: AlienTail4
+    400120: AlienTail4Gizmo
+    400122: AlienTail5
+    400124: AlienTail5Gizmo
+    400126: Bone001
+    400128: cesta001
+    400130: char1
+    400132: //RootNode
+    4300000: char1
+    4300002: cesta001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: cesta001
+    13700002: char1
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 02 - Default
+    second: {fileID: 2100000, guid: 31ede87997f4e7b47b7d9643c3cb1a50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat
+    second: {fileID: 2100000, guid: 0536bf187463d994e808a5f1e0ed43a6, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 1
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves:
+      - name: Curve
+        curve:
+          serializedVersion: 2
+          curve:
+          - serializedVersion: 2
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          - serializedVersion: 2
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+          preInfinity: 2
+          postInfinity: 2
+          rotationOrder: 4
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Alien
+        weight: 1
+      - path: AlienHeadGizmo
+        weight: 1
+      - path: AlienLArmPalmGizmo
+        weight: 1
+      - path: AlienLLegPlatform
+        weight: 1
+      - path: AlienLLegPlatformGizmo
+        weight: 1
+      - path: AlienPelvis
+        weight: 1
+      - path: AlienPelvis/AlienLLeg1
+        weight: 1
+      - path: AlienPelvis/AlienLLeg1/AlienLLeg2
+        weight: 1
+      - path: AlienPelvis/AlienLLeg1/AlienLLeg2/AlienLLegPalm
+        weight: 1
+      - path: AlienPelvis/AlienRLeg1
+        weight: 1
+      - path: AlienPelvis/AlienRLeg1/AlienRLeg2
+        weight: 1
+      - path: AlienPelvis/AlienRLeg1/AlienRLeg2/AlienRLegPalm
+        weight: 1
+      - path: AlienPelvis/AlienSpine1
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit01
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit01/AlienLArmDigit02
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit01/AlienLArmDigit02/AlienLArmDigit03
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit11
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit11/AlienLArmDigit12
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit11/AlienLArmDigit12/AlienLArmDigit13
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit21
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit21/AlienLArmDigit22
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit21/AlienLArmDigit22/AlienLArmDigit23
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit31
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit31/AlienLArmDigit32
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienLArmCollarbone/AlienLArm1/AlienLArm2/AlienLArmPalm/AlienLArmDigit31/AlienLArmDigit32/AlienLArmDigit33
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit01
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit01/AlienRArmDigit02
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit01/AlienRArmDigit02/AlienRArmDigit03
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit11
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit11/AlienRArmDigit12
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit11/AlienRArmDigit12/AlienRArmDigit13
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit21
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit21/AlienRArmDigit22
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit21/AlienRArmDigit22/AlienRArmDigit23
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit31
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit31/AlienRArmDigit32
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienRArmCollarbone/AlienRArm1/AlienRArm2/AlienRArmPalm/AlienRArmDigit31/AlienRArmDigit32/AlienRArmDigit33
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienSpine
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienSpine/AlienHead
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienSpine/AlienHead/AlienHeadBone001
+        weight: 1
+      - path: AlienPelvis/AlienSpine1/AlienSpine2/AlienRibcage/AlienSpine/AlienHead/AlienHeadBone002
+        weight: 1
+      - path: AlienPelvis/AlienTail1
+        weight: 1
+      - path: AlienPelvis/AlienTail1/AlienTail2
+        weight: 1
+      - path: AlienPelvis/AlienTail1/AlienTail2/AlienTail3
+        weight: 1
+      - path: AlienPelvis/AlienTail1/AlienTail2/AlienTail3/AlienTail4
+        weight: 1
+      - path: AlienPelvis/AlienTail1/AlienTail2/AlienTail3/AlienTail4/AlienTail5
+        weight: 1
+      - path: AlienPelvisGizmo
+        weight: 1
+      - path: AlienRArmPalmGizmo
+        weight: 1
+      - path: AlienRArmPalmGizmo/Bone001
+        weight: 1
+      - path: AlienRLegPlatform
+        weight: 1
+      - path: AlienRLegPlatformGizmo
+        weight: 1
+      - path: AlienTail3Gizmo
+        weight: 1
+      - path: AlienTail4Gizmo
+        weight: 1
+      - path: AlienTail5Gizmo
+        weight: 1
+      - path: cesta001
+        weight: 1
+      - path: char1
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+    normalCalculationMode: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
