@@ -15,10 +15,14 @@ public class PlayerController : MonoBehaviour
     private Animator m_Animator;
     private Vector3 m_LastPosition;
 
-    private void Start()
+    private void Awake()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         m_Animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
         m_LastPosition = m_Rigidbody.position;
     }
 
@@ -31,9 +35,9 @@ public class PlayerController : MonoBehaviour
     {
         Move();
 
-        Turning();
-
         Animating();
+
+        Turning();
 
         m_LastPosition = m_Rigidbody.position;
     }
@@ -63,7 +67,7 @@ public class PlayerController : MonoBehaviour
         bool isWalking = m_Rigidbody.velocity.magnitude > m_SpeedThreshold;
 
         m_Animator.SetBool("IsWalking", isWalking);
-        m_Animator.SetFloat("Speed", speed);
+        m_Animator.SetFloat("Speed", speed * 0.5f);
     }
 
     private void OnFootStepAudio()

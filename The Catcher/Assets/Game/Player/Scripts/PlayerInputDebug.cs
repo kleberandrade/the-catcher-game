@@ -14,6 +14,12 @@ public class PlayerInputDebug : MonoBehaviour
     [Range(0.0f, 1.0f)]
     public float m_ViewportPadding = 0.1f;
 
+    [Header("Keyboard")]
+    public bool m_UseKeyboard;
+    public float m_SpeedKeyboard;
+
+    private float m_Angle = 0.0f;
+
     private void Start()
     { 
         SetDebugMode();
@@ -21,11 +27,12 @@ public class PlayerInputDebug : MonoBehaviour
 
     private void Update ()
     {
-        if (!m_Slider)
-            return;
+        if (m_UseKeyboard)
+            m_Angle += Input.GetAxis("Horizontal") * m_SpeedKeyboard * Time.deltaTime;
+        else if (m_Slider)
+            m_Angle = m_Slider.value;
 
-        float angle = m_Slider.value;
-        float horizontal = Helper.Normalization(angle, m_MinAmplitude, m_MaxAmplitude);
+        float horizontal = Helper.Normalization(m_Angle, m_MinAmplitude, m_MaxAmplitude);
         horizontal = Helper.ViewportToWord(horizontal,  m_ViewportPadding, 1.0f - m_ViewportPadding, Helper.GetDepht(m_Controller.transform.position));
 
         m_Controller.Input(new Vector3(horizontal, 0.0f, 0.0f));
@@ -33,14 +40,20 @@ public class PlayerInputDebug : MonoBehaviour
 
     private void SetDebugMode()
     {
-        if (!m_Slider)
+        if (m_UseKeyboard)
+        {
+            m_Slider.gameObject.SetActive(false);
             return;
+        }
 
-        m_Slider.gameObject.SetActive(true);
-        m_Slider.maxValue = 90.0f;
-        m_Slider.minValue = -90.0f;
-        m_Slider.value = 0.0f;
-        m_Slider.interactable = true;
-        m_Slider.wholeNumbers = false;
+        if (m_Slider)
+        {
+            m_Slider.gameObject.SetActive(true);
+            m_Slider.maxValue = 90.0f;
+            m_Slider.minValue = -90.0f;
+            m_Slider.value = 0.0f;
+            m_Slider.interactable = true;
+            m_Slider.wholeNumbers = false;
+        }
     }
 }

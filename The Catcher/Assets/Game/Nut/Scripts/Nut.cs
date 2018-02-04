@@ -51,13 +51,18 @@ public class Nut : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
             GroundCollision();
+    }
 
+    private void OnTriggerEnter(Collider other)
+    {
         if (other.transform.CompareTag("Basket"))
             BacketCollision();
     }
 
     private void GroundCollision()
     {
+        Debug.Log("GroundCollision");
+
         m_Collider.enabled = false;
         m_IsFalling = false;
 
@@ -85,6 +90,8 @@ public class Nut : MonoBehaviour
 
     public void BacketCollision()
     {
+        Debug.Log("BasketCollision");
+
         m_IsFalling = false;
         m_Collider.enabled = false;
 
