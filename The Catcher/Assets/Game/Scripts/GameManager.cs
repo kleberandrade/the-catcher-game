@@ -1,11 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : MonoBehaviour
+{
+    [Header("Score")]
+    public Score m_Score;
 
-	// Use this for initialization
-	void Start () {
+    void Start () {
 		
 	}
 	
