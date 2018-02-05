@@ -66,9 +66,9 @@ Material:
     - _Emission: 1
     - _EmissionLM: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.061
+    - _Glossiness: 0.105
     - _GlossyReflections: 0
-    - _Metallic: 0.342
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02

@@ -141,7 +141,7 @@ public class HubManager : MonoBehaviour
     public void PlayGame()
     {
         PlayerPrefs.SetInt(m_TaskKey, int.Parse(m_TaskInputField.text));
-        Transition.LoadScene(m_PlaySceneName, Color.black, 0.5f);
+        Transition.LoadScene(m_PlaySceneName, Color.black, 2.0f);
     }
 
     public void Zerar()

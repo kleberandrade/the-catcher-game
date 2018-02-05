@@ -43,4 +43,20 @@ public static class Helper
     {
         return Normalization(WorldToViewport(position, depth), min, max);
     }
+
+    public static float Map(float value, float inMin, float inMax, float outMin, float outMax)
+    {
+        return (value - inMin) * (outMax - outMin) / (inMax - inMin) + outMin;
+    }
+
+    public static float Clamp(float value, float min, float max)
+    {
+        if (value < min)
+            return min;
+
+        if (value > max)
+            return max;
+
+        return value;
+    }
 }

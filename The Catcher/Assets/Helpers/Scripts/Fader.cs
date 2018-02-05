@@ -40,7 +40,7 @@ public class Fader : MonoBehaviour
 		myTex.Apply ();
         
 		GUI.DrawTexture (new Rect (0, 0, Screen.width, Screen.height), myTex);
-        
+
         if (m_IsFadeIn)
 			m_Alpha = Mathf.Lerp (m_Alpha, -0.1f, m_FadeDamp * Time.deltaTime);
 		else

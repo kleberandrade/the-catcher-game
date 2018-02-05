@@ -5,9 +5,8 @@ using UnityEngine;
 public class Nut : MonoBehaviour 
 {
     #region [ Events ]
-    public delegate void CollisionAction(Nut nutScript);
-    public static event CollisionAction OnGroundCollision;
-    public static event CollisionAction OnBasketCollision;
+    public delegate void CollisionAction(Nut nutScript, bool captured);
+    public static event CollisionAction OnNutCollision;
     #endregion
 
     public AudioClip m_GroundAudioClip;
@@ -77,8 +76,8 @@ public class Nut : MonoBehaviour
 
         StartCoroutine(GroundDestroy());
 
-        if (OnGroundCollision != null)
-            OnGroundCollision(this);
+        if (OnNutCollision != null)
+            OnNutCollision(this, false);
     }
 
     private IEnumerator GroundDestroy()
@@ -102,8 +101,8 @@ public class Nut : MonoBehaviour
 
         Destroy(gameObject, m_TimeToDestroy);
 
-        if (OnBasketCollision != null)
-            OnBasketCollision(this);
+        if (OnNutCollision != null)
+            OnNutCollision(this, true);
     }
 
     private void Spurt()
