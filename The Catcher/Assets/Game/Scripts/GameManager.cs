@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,10 +14,13 @@ public class GameManager : MonoBehaviour
     [Header("Lose Connection")]
     public string m_LoseConnectionTitle = "Problema de conexão";
     public string m_LoseConnectionText = "Conexão perdida, tentando reconectar...";
+    public string m_LoseConnectionConfirm = "Sair";
 
     [Header("Message Dialog")]
     public string m_MessageDialogName = "MessageDialogCanvas";
     public GameObject m_MessageDialogPrefab;
+
+    private UnityAction m_ConfirmAction;
 
     private void Start()
     {
@@ -43,21 +47,16 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Starting()
     {
-        Debug.Log("Starting...");
-
         yield return null;
     }
 
     private IEnumerator Tutorial()
     {
-        Debug.Log("Tutorial...");
         yield return null;
     }
 
     private IEnumerator Playing()
     {
-        Debug.Log("Playing...");
-
         while (!IsFinish())
         {
             yield return null;
@@ -106,11 +105,14 @@ public class GameManager : MonoBehaviour
 
     private void OnConnected()
     {
-        
+        MessageDialog.Instance.Hide();
     }
 
     private void OnDisconnected()
     {
-        
+        MessageDialog.Instance.Show(m_LoseConnectionTitle,
+            m_LoseConnectionText,
+            new string[] { m_LoseConnectionConfirm },
+            new UnityAction[] { m_ConfirmAction });
     }
 }

@@ -5536,6 +5536,7 @@ MonoBehaviour:
   m_EndDelay: 3
   m_LoseConnectionTitle: "Conex\xE3o perdida"
   m_LoseConnectionText: "Conex\xE3o perdida, tentando reconectar..."
+  m_LoseConnectionConfirm: Sair
   m_MessageDialogName: MessageDialogCanvas
   m_MessageDialogPrefab: {fileID: 122746, guid: 6b79c007504ad6146a3863d6c0ce1dea,
     type: 2}
@@ -6096,6 +6097,11 @@ Prefab:
         type: 2}
       propertyPath: m_SceneQuitButton
       value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 225701308612337696, guid: 75bcd9f06a981124393bb2ab91bed6a0,
+        type: 2}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75bcd9f06a981124393bb2ab91bed6a0, type: 2}

@@ -23,7 +23,6 @@ public class PauseGame : MonoBehaviour
 
     private bool m_Paused = false;
     private bool m_IsFading = false;
-    private bool m_IsShow = false;
 
     private void Start()
     {
@@ -40,7 +39,6 @@ public class PauseGame : MonoBehaviour
 
         m_Paused = false;
         m_IsFading = false;
-        m_IsShow = false;
         
         m_PausePanel.gameObject.SetActive(false);
     }
@@ -75,7 +73,6 @@ public class PauseGame : MonoBehaviour
         Time.timeScale = 1.0f;
 
         m_AudioSource.Play();
-        m_IsShow = false;
         StartCoroutine(Fade(false, m_PausePanel ));
     }
 

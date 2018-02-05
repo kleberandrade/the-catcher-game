@@ -56,6 +56,8 @@ public class MessageDialog : MonoBehaviour
 
     public void Show(string title, string message, string[] textButtons, UnityAction[] actionEvents)
     {
+        Time.timeScale = 0.0f;
+
         m_IsShow = true;
         m_Title.text = title;
         m_Message.text = message;
@@ -93,6 +95,7 @@ public class MessageDialog : MonoBehaviour
 
     public void Hide()
     {
+        Time.timeScale = 1.0f;
         m_IsShow = false;
         StartCoroutine(Fade(false, new RectTransform[] { m_FaderPanel, m_MessagePanel }));
     }

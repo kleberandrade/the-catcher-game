@@ -106,6 +106,8 @@ public class Connection : MonoBehaviour
         {
             m_ClientSocket.Connect(m_ServerHostName, m_ServerPort);
 
+            Thread.Sleep(500);
+
             if (IsConnected && OnConnected != null)
                 m_AppendQueue.Enqueue(OnConnected);
 

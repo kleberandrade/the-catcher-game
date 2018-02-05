@@ -95,7 +95,7 @@ public class HubManager : MonoBehaviour
 
         if (PlayerPrefs.HasKey(m_TaskKey))
             m_TaskInputField.text = PlayerPrefs.GetInt(m_TaskKey).ToString();
-        else 
+        else
             m_TaskInputField.text = m_TaskValueDefault.ToString();
     }
 
@@ -140,6 +140,11 @@ public class HubManager : MonoBehaviour
 
     public void PlayGame()
     {
+        string name = m_UserInputField.text;
+        int targetNumber = int.Parse(m_TaskInputField.text);
+
+        SessionManager.Instance.CreateUser(name, targetNumber);
+
         PlayerPrefs.SetInt(m_TaskKey, int.Parse(m_TaskInputField.text));
         Transition.LoadScene(m_PlaySceneName, Color.black, 2.0f);
     }

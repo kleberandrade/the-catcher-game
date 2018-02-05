@@ -386,6 +386,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b15c390ba141afa41b95c584723200da, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &231067569
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4987262126981034, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 887288de15737344d9ca7de436935ffd, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &232855293
 Prefab:
   m_ObjectHideFlags: 0
@@ -1264,6 +1306,9 @@ MonoBehaviour:
   m_ConnectedColor: {r: 0.09411766, g: 0.854902, b: 0.6666667, a: 1}
   m_DisconnectedColor: {r: 0.90588236, g: 0.29803923, b: 0.23529412, a: 1}
   m_ConnectionStatus: {fileID: 1507090628}
+  m_ConnectionTitle: "Falha de conex\xE3o"
+  m_ConnectionText: "Sem conex\xE3o com o rob\xF4"
+  m_ConnectionConfirm: OK
   m_HomeButton: {fileID: 820914786}
   m_HomeTitle: "Zerando rob\xF4"
   m_HomeText: Mantenha o parado no centro
@@ -2160,7 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 934639537}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &1824756392
