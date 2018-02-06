@@ -24,12 +24,12 @@ public class GeneticDataSave
         m_Generations.Add(new PopulationDataSave(population));
     }
 
-    public void Save(string folder, string fileName)
+    public void Save(string fileName)
     {
-        string filePath = "D:/" + folder;
+        string filePath = "D:/The Catcher/AI Save";
         Directory.CreateDirectory(filePath);
 
-        filePath += "/" + fileName + ".json";
+        filePath += "/" + fileName;
 
         Generations = m_Generations.ToArray();
 

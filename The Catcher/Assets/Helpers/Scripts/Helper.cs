@@ -28,7 +28,7 @@ public static class Helper
         return Camera.main.ViewportToWorldPoint(new Vector3(position, 0, depth)).x;
     }
 
-    public static float WorldToViewport(Vector3 position, float depth)
+    public static float WorldToViewport(Vector3 position)
     {
         Vector3 viewport = Camera.main.WorldToViewportPoint(position);
         return viewport.x;
@@ -36,12 +36,7 @@ public static class Helper
 
     public static float WorldToViewport(Vector3 position, float min, float max)
     {
-        return Normalization(WorldToViewport(position, GetDepht(position)), min, max);
-    }
-
-    public static float WorldToViewport(Vector3 position, float min, float max, float depth)
-    {
-        return Normalization(WorldToViewport(position, depth), min, max);
+        return Normalization(WorldToViewport(position), min, max);
     }
 
     public static float Map(float value, float inMin, float inMax, float outMin, float outMax)

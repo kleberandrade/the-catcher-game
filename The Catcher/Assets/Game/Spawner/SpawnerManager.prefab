@@ -19,12 +19,11 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4606516053533530}
-  - component: {fileID: 114341827720254258}
   - component: {fileID: 199017132512177528}
-  - component: {fileID: 114003216050247244}
-  - component: {fileID: 114902132746459296}
   - component: {fileID: 198485508384722246}
   - component: {fileID: 82419730078757110}
+  - component: {fileID: 114726031600356286}
+  - component: {fileID: 114875815380909508}
   m_Layer: 0
   m_Name: SpawnerManager
   m_TagString: Untagged
@@ -39,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1114873573126102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.23, y: 11.48, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -53,8 +52,7 @@ AudioSource:
   m_GameObject: {fileID: 1114873573126102}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24304612, guid: 3d1f995e180cb624daa4056e52add5d2,
-    type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2da29412ee18d3e4e9e28028b37f62e2, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -126,7 +124,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114003216050247244
+--- !u!114 &114726031600356286
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -146,21 +144,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &114341827720254258
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114873573126102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8728414cd24a2b4fbc1e9a756033b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ObjectPrefab: {fileID: 167044, guid: 0145485a8b2e095479a979c4936c4ebe, type: 2}
-  m_PooledAmount: 2
-  m_WillGrow: 0
---- !u!114 &114902132746459296
+--- !u!114 &114875815380909508
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -171,7 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3570949e5a6e514d83345d108ec66da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TimeToSpawning: 0.5
+  m_ObjectToSpawn: {fileID: 167044, guid: 0145485a8b2e095479a979c4936c4ebe, type: 2}
+  m_DelayToSpawning: 0.5
 --- !u!198 &198485508384722246
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -232,7 +217,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 0
+  randomSeed: -142615545
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -7,6 +7,8 @@ public class Gameover : MonoBehaviour
 {
     public Button m_ButtonClose;
 
+    public Text m_FinalScoreText;
+
     private FadeInOut m_Fade;
     private AudioSource m_AudioSource;
 
@@ -17,16 +19,24 @@ public class Gameover : MonoBehaviour
 
         m_ButtonClose.onClick.RemoveAllListeners();
         m_ButtonClose.onClick.AddListener(delegate { Close(); });
+
+        gameObject.SetActive(false);
     }
 
-    public void Show()
+    public void Show(float score)
     {
-        m_Fade.Fade(true, 1.0f, 0.0f);
+        m_FinalScoreText.text = string.Format("{0:0.0}%", score);
+        m_Fade.Fade(true, 0.3f, 0.0f);
     }
     
     private void Close()
     {
         m_AudioSource.Play();
-        Transition.LoadScene("MainMenu", Color.black, 0.25f);
+
+        AIDirector.Instance.Save(SessionManager.Instance.FileName);
+
+        SessionManager.Instance.Save();
+
+        Transition.LoadScene("MainMenu", Color.black, 2.0f);
     }
 }

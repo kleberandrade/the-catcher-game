@@ -91,7 +91,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 167044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.179056, y: 17.87691, z: -43.405895}
+  m_LocalPosition: {x: -7.5993323, y: 1.12, z: 0.7021027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 437738}
@@ -403,7 +403,8 @@ MonoBehaviour:
   m_CapturedAudioClip: {fileID: 8300000, guid: a61213a2e6fc387469f3963034b5c7c8, type: 3}
   m_Speed: 0.5
   m_TimeToDestroy: 1
-  m_SpurtParticle: {fileID: 19800006, guid: c5e4ab6a88d07a948944ece24700f0b8, type: 2}
+  m_TimeToCapture: 0.3
+  m_SpurtParticle: {fileID: 19800006, guid: d8958e93ab331754aa74fbc1ed284c95, type: 2}
 --- !u!198 &198821744519045746
 ParticleSystem:
   m_ObjectHideFlags: 1

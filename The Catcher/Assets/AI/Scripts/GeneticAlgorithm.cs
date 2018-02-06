@@ -23,7 +23,7 @@ public class GeneticAlgorithm
         for (int i = 0; i < populationSize; i++)
             Population.Add(new Chromosome(new float[] {
                 Helper.Map((float)m_Random.NextDouble(), 0.0f, 1.0f, 0.5f, 1.0f),
-                Helper.Map((float)m_Random.NextDouble(), 0.0f, 1.0f, 0.0f, 0.3f) }));
+                Helper.Map((float)m_Random.NextDouble(), 0.0f, 1.0f, 0.0f, 0.2f) }));
     }
 
     public void NewGeneration()
@@ -42,7 +42,7 @@ public class GeneticAlgorithm
             child.Genes[1] += Helper.Map((float)m_Random.NextDouble(), 0.0f, 1.0f, -MutationRate, MutationRate);
 
             child.Genes[0] = Helper.Clamp(child.Genes[0], 0.0f, 1.0f);
-            child.Genes[1] = Helper.Clamp(child.Genes[0], 0.0f, 1.0f);
+            child.Genes[1] = Helper.Clamp(child.Genes[1], 0.0f, 1.0f);
 
             m_NewPopulation.Add(child);
         }

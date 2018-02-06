@@ -22,8 +22,6 @@ public class AIDirector : MonoBehaviour
 
     public AIParameter m_Parameter;
 
-    public string m_Folder = "AI Save";
-
     private System.Random m_Random = null;
 
     private GeneticAlgorithm m_GA;
@@ -52,7 +50,7 @@ public class AIDirector : MonoBehaviour
     {
         m_IndexChromosome++;
 
-        CheckNextGeneration();
+        CheckNextGeneration(m_IndexChromosome);
 
         return m_GA.Population[m_IndexChromosome];
     }
@@ -63,13 +61,18 @@ public class AIDirector : MonoBehaviour
         m_GA.Population[m_IndexChromosome].Evaluate(m_Parameter);
     }
 
-    public void CheckNextGeneration()
+    public void VerifyHasNext()
     {
-        if (m_IndexChromosome == m_Parameter.PopulationSize)
-        {
-            m_GA.NewGeneration();
+        CheckNextGeneration(m_IndexChromosome + 1);
+    }
 
+    public void CheckNextGeneration(int index)
+    {
+        if (index == m_Parameter.PopulationSize)
+        {
             m_Data.AddPopulation(m_GA.Population);
+
+            m_GA.NewGeneration();
 
             m_IndexChromosome = 0;
         }
@@ -77,6 +80,6 @@ public class AIDirector : MonoBehaviour
 
     public void Save(string fileName)
     {
-        m_Data.Save(m_Folder, fileName);
+        m_Data.Save(fileName);
     }
 }

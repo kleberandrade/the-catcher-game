@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class SessionManager : MonoBehaviour
@@ -24,45 +25,87 @@ public class SessionManager : MonoBehaviour
     }
     #endregion
 
-    private User m_User;
+    public UserDataSave User;
+
+    public string FileName
+    {
+        get { return string.Format("{0} {1}.json", User.Name, User.Date).Replace(":","-"); }
+    }
 
     public void CreateUser(string name, int targetNumber)
     {
-        m_User = new User(name, targetNumber);
+        User = new UserDataSave(name, targetNumber);
+    }
+
+    public void Save()
+    {
+        string filePath = "D:/The Catcher/Profile";
+        Directory.CreateDirectory(filePath);
+
+        filePath += "/" + FileName;
+
+        string dataAsJson = JsonUtility.ToJson(this);
+        File.WriteAllText(filePath, dataAsJson);
     }
 }
 
 [Serializable]
-public class User
+public class UserDataSave
 {
     public string Name;
 
+    [NonSerialized]
     public DateTime DateTime;
 
-    public int TargetNumber;
+    public string Date;
 
-    public Profile Profile;
+    public ProfileDataSave Profile;
 
-    public User(string name, int targetNumber)
+    public TargetDataSave Target;
+
+    public UserDataSave(string name, int targetNumber)
     {
         Name = name;
-        TargetNumber = targetNumber;
-
         DateTime = DateTime.Now;
-        Profile = new Profile();
+        Date = DateTime.ToString("u");
+        Profile = new ProfileDataSave();
+        Target = new TargetDataSave(targetNumber);
     }
 }
 
 [Serializable]
-public class Profile
+public class ProfileDataSave
 {
     public List<float> Motion;
 
     public List<float> Timestamp;
 
-    public Profile()
+    public ProfileDataSave()
     {
         Motion = new List<float>();
         Timestamp = new List<float>();
+    }
+}
+
+[Serializable]
+public class TargetDataSave
+{
+    public int TargetNumber;
+
+    public int TotalCaptured;
+
+    public List<bool> Captured;
+
+    public List<float> Position;
+
+    public List<float> TimeToSpawn;
+
+    public TargetDataSave(int targetNumber)
+    {
+        TargetNumber = targetNumber;
+        TotalCaptured = 0;
+        Position = new List<float>();
+        Captured = new List<bool>();
+        TimeToSpawn = new List<float>();
     }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class Nut : MonoBehaviour 
+public class Nut : MonoBehaviour, IObjectSpawned
 {
     #region [ Events ]
     public delegate void CollisionAction(Nut nutScript, bool captured);
@@ -14,6 +14,7 @@ public class Nut : MonoBehaviour
     public float m_Speed = 0.5f;
 
     public float m_TimeToDestroy = 1.0f;
+    public float m_TimeToCapture = 0.3f;
 
     public ParticleSystem m_SpurtParticle;
 
@@ -59,9 +60,7 @@ public class Nut : MonoBehaviour
     }
 
     private void GroundCollision()
-    {
-        Debug.Log("GroundCollision");
-
+    { 
         m_Collider.enabled = false;
         m_IsFalling = false;
 
@@ -72,8 +71,6 @@ public class Nut : MonoBehaviour
 
         m_Animator.SetBool("InGround", true);
 
-        Spurt();
-
         StartCoroutine(GroundDestroy());
 
         if (OnNutCollision != null)
@@ -82,6 +79,7 @@ public class Nut : MonoBehaviour
 
     private IEnumerator GroundDestroy()
     {
+        Spurt();
         yield return new WaitForSeconds(m_TimeToDestroy);
         m_Rigidbody.constraints = RigidbodyConstraints.None;
         Destroy(gameObject);
@@ -89,8 +87,6 @@ public class Nut : MonoBehaviour
 
     public void BacketCollision()
     {
-        Debug.Log("BasketCollision");
-
         m_IsFalling = false;
         m_Collider.enabled = false;
 
@@ -99,7 +95,7 @@ public class Nut : MonoBehaviour
 
         m_Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
 
-        Destroy(gameObject, m_TimeToDestroy);
+        Destroy(gameObject, m_TimeToCapture);
 
         if (OnNutCollision != null)
             OnNutCollision(this, true);
@@ -107,7 +103,30 @@ public class Nut : MonoBehaviour
 
     private void Spurt()
     {
-        ParticleSystem spurt = (ParticleSystem)Instantiate(m_SpurtParticle, m_Rigidbody.position, Quaternion.identity);
+        ParticleSystem spurt = Instantiate(m_SpurtParticle, m_Rigidbody.position, Quaternion.identity);
+        spurt.Play();
         Destroy(spurt.gameObject, spurt.main.duration * 2.0f);
+    }
+
+    public void SetSpeed(float speed)
+    {
+        m_Speed = speed;
+    }
+
+    public void NavigationTo(Vector3 scorePosition)
+    {
+        StartCoroutine(NavigationToScore(scorePosition));
+    }
+
+    private IEnumerator NavigationToScore(Vector3 scorePosition)
+    {
+        float capturedTime = Time.time;
+        Vector3 capturedPosition = transform.position;
+
+        while (Vector3.Distance(transform.position, scorePosition) > 0.1f)
+        {
+            transform.position = Vector3.Lerp(capturedPosition, scorePosition, (Time.time - capturedTime) / m_TimeToCapture);
+            yield return null;
+        }
     }
 }

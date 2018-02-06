@@ -6,6 +6,23 @@ using UnityEngine.UI;
 [RequireComponent(typeof(CanvasGroup))]
 public class PauseGame : MonoBehaviour
 {
+    #region [ Singleton ]
+    private static PauseGame m_Instance = null;
+
+    public static PauseGame Instance
+    {
+        get { return m_Instance; }
+    }
+
+    private void Awake()
+    {
+        if (m_Instance == null)
+            m_Instance = this;
+        else if (m_Instance != this)
+            Destroy(gameObject);
+    }
+    #endregion
+
     public RectTransform m_PausePanel;
 
     public Button m_ResumeButton;
@@ -21,7 +38,8 @@ public class PauseGame : MonoBehaviour
     private CanvasGroup m_CanvasGroup;
     private AudioSource m_AudioSource;
 
-    private bool m_Paused = false;
+    public bool IsPaused { get; private set; }
+
     private bool m_IsFading = false;
 
     private void Start()
@@ -37,7 +55,7 @@ public class PauseGame : MonoBehaviour
         m_ResumeButton.onClick.RemoveAllListeners();
         m_ResumeButton.onClick.AddListener(delegate { TogglePause(); });
 
-        m_Paused = false;
+        IsPaused = false;
         m_IsFading = false;
         
         m_PausePanel.gameObject.SetActive(false);
@@ -51,12 +69,12 @@ public class PauseGame : MonoBehaviour
 
     private void TogglePause()
     {
-        if (!m_Paused)
+        if (!IsPaused)
             Show();
         else
             Hide();
 
-        m_Paused = !m_Paused;
+        IsPaused = !IsPaused;
     }
 
     public void Show()

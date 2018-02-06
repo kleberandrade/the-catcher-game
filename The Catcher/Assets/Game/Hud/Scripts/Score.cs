@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,8 +15,18 @@ public class Score : MonoBehaviour
     private RectTransform m_RectTransform;
     private AudioSource m_AudioSource;
 
-    private int Point;
+    private int m_Point;
     private int NumberOfTargets;
+
+    public int Point
+    {
+        get { return m_Point; }
+    }
+
+    public float Percentage
+    {
+        get { return m_Point / (float)NumberOfTargets * 100.0f; }
+    }
 
     private void Awake()
     {
@@ -34,18 +43,19 @@ public class Score : MonoBehaviour
 
         m_Slider.maxValue = numberOfTargets;
         m_Slider.minValue = 0;
+        m_Slider.wholeNumbers = true;
 
-        Point = 0;
+        m_Point = 0;
         m_CurrentTarget = 0;
         SetHealthUI();
     }
 
     public void NextPoint()
     {
-        if (Point >= m_CurrentTarget)
+        if (m_Point >= m_CurrentTarget)
             return;
 
-        Point++;
+        m_Point++;
         
         StartCoroutine(m_Fade.PulseInverse(0.2f));
         StartCoroutine(PlayAudio(0.2f));
@@ -67,7 +77,7 @@ public class Score : MonoBehaviour
     private void SetHealthUI()
     {
         m_Slider.value = Mathf.Min(m_CurrentTarget, NumberOfTargets);
-        m_Text.text = Point.ToString();
+        m_Text.text = m_Point.ToString();
     }
 
     public Vector3 WorldPoint(Vector3 position)
@@ -77,11 +87,9 @@ public class Score : MonoBehaviour
         return worldPoint;
     }
 
+    /*
     public void OnDrawGizmos()
-    {
-        if (!EditorApplication.isPlaying)
-            return;
-
+    { 
         if (m_DebugTargetPosition)
         {
             Gizmos.color = new Color(1.0f, 0.0f, 0.0f, 0.5f);
@@ -89,4 +97,5 @@ public class Score : MonoBehaviour
             Gizmos.DrawSphere(WorldPoint(m_DebugTargetPosition.position), 1.0f);
         }
     }
+    */
 }
